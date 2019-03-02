@@ -1,4 +1,13 @@
+/* PostCSS before it was cool */
+/* usage: @include css3-prefix(transform, scale3d(2.5, 2, 1.5)); */
+@mixin css3-prefix($prop, $value) {
+  -webkit-#{$prop}: #{$value};
+  -moz-#{$prop}: #{$value};
+  #{$prop}: #{$value};
+}
+
 /* Famously known as the keyframes prefix ninja */
+/* usage: @include keyframes(keyframeName) instead of traditionnal notation */
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content;
@@ -11,4 +20,12 @@
   @keyframes #{$name} {
     @content;
   }
+}
+
+/* Truncate a long string to fit its container */
+/* usage: @include text-ellipsis(); */
+@mixin text-ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 }
